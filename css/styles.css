@@ -157,7 +157,7 @@ textarea {
 .portfolio-active-link,
 .contacts-active-link {
     position: relative;
-    color: var(--primary-brand-color);
+    color: var(--pressed-state-color);
 }
 
 .studio-active-link::after,
