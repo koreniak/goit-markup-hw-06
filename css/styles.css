@@ -447,7 +447,7 @@ textarea {
     display: block;
     width: 408px;
     min-height: 579px;
-    padding: 24px 24px;
+    padding: 72px 24px 24px;
 
     background-color: var(--modal-background-color);
     border-radius: 4px;
@@ -458,12 +458,11 @@ textarea {
 }
 
 .close-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
     width: 24px;
     height: 24px;
-    margin-left: 336px;
+    top: 24px;
+    right: 24px;
 
     cursor: pointer;
 
@@ -485,8 +484,8 @@ textarea {
 }
 
 .modal-title {
-    margin-top: 24px;
-    margin-bottom: 16px;
+    margin-top: 0;
+    margin-bottom: 14px;
 
     font-weight: 700;
     line-height: 1.5;
@@ -741,7 +740,6 @@ textarea {
     border-radius: 4px;
     background-color: transparent;
     outline: none;
-    /* appearance: none; */
 }
 
 .subscribe-field:focus-within > .subscribe-label {
