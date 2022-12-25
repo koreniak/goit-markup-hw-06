@@ -1,5 +1,6 @@
 :root {
     --primary-brand-color: #4D5AE5;
+    --pressed-state-color: #404BBF;
     --dark-color: #2E2F42;
     --success-color: #31D0AA;
     --text-color: #434455;
@@ -8,6 +9,8 @@
     --light-color: #F4F4FD;
     --white-color: #FFFFFF;
     --modal-background-color: #FCFCFC;
+    --modal-overlay-color: rgba(46, 47, 66, 0.4);
+    --hero-background-color: rgba(46, 47, 66, 0.7);
 }
 
 body {
@@ -147,7 +150,7 @@ textarea {
 
 .menu-link:hover,
 .menu-link:focus {
-    color: var(--primary-brand-color);
+    color: var(--pressed-state-color);
 }
 
 .studio-active-link,
@@ -167,7 +170,7 @@ textarea {
     width: 100%;
     height: 4px;
 
-    background-color: var(--primary-brand-color);
+    background-color: var(--pressed-state-color);
     border-radius: 2px;
 
     transform: translate(-50%);
@@ -183,7 +186,7 @@ textarea {
     width: 78px;
     height: 4px;
     
-    background-color: var(--primary-brand-color);
+    background-color: var(--pressed-state-color);
     border-radius: 2px;
 }
 
@@ -205,7 +208,7 @@ textarea {
 
 .cont-link:hover,
 .cont-link:focus {
-    color: var(--primary-brand-color)
+    color: var(--pressed-state-color)
 }
 
 /* ======= Studio ======= */
@@ -225,7 +228,7 @@ textarea {
     max-width: 1600px;
     margin: 0 auto;
 
-    background-image: linear-gradient(to right, rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url("../images/hero-background.jpg");
+    background-image: linear-gradient(to right, var(--hero-background-color), var(--hero-background-color)), url("../images/hero-background.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -270,7 +273,7 @@ textarea {
 
 .modal-button:hover,
 .modal-button:focus {
-    background-color: #404BBF;
+    background-color: var(--pressed-state-color);
 
 }
 
@@ -368,6 +371,13 @@ textarea {
 
     background-color: var(--primary-brand-color);
     border-radius: 50%;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+.team-icon-link:hover,
+.team-icon-link:focus {
+    background-color: var(--pressed-state-color);
 }
 
 /* === Customers === */
@@ -375,8 +385,6 @@ textarea {
 .customers-list {
     display: flex;
     justify-content: space-between;
-    /* justify-content: center;
-    gap: 24px; */
 }
 
 .customers-title {
@@ -399,7 +407,7 @@ textarea {
 
 .customers-link:hover,
 .customers-link:focus {
-    color: var(--primary-brand-color);
+    color: var(--pressed-state-color);
     border-color: 1px solid var(--primary-brand-color);
 }
 
@@ -417,7 +425,7 @@ textarea {
     width: 100%;
     height: 100%;
 
-    background-color: rgba(46, 47, 66, 0.4);
+    background-color: var(--modal-overlay-color);
 
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -460,17 +468,20 @@ textarea {
     cursor: pointer;
 
     background-color: var(--accent-color);
+    fill: #000000;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
 
     transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+                background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .close-button:hover,
 .close-button:focus {
     border-color: transparent;
-    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+    background-color: var(--pressed-state-color);
+    fill: var(--white-color);
 }
 
 .modal-title {
@@ -495,6 +506,21 @@ textarea {
     width: 100%;
 }
 
+.form-field {
+    position: relative;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.form-icon {
+    position: absolute;
+    left: 19px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    fill: var(--dark-color);
+}
+
 .modal-label {
     margin-bottom: 4px;
 
@@ -508,14 +534,14 @@ textarea {
 .modal-input {
     width: 100%;
     padding: 10px 34px;
-    margin-bottom: 8px;
 
     line-height: 1.12;
     letter-spacing: 0.01em;
 
-    color: var(--text-color);
+    color: var(--dark-color);
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: 4px;
+    outline: none;
 }
 
 .modal-textarea {
@@ -527,9 +553,19 @@ textarea {
     line-height: 1.12;
     letter-spacing: 0.01em;
     
-    color: var(--text-color);
+    color: var(--dark-color);
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: 4px;
+    outline: none;
+}
+
+.modal-input:focus,
+.modal-textarea:focus {
+    border-color: var(--primary-brand-color);
+}
+
+.modal-input:focus + .form-icon {
+    fill: var(--primary-brand-color);
 }
 
 .modal-textarea::placeholder {
@@ -540,22 +576,52 @@ textarea {
     color: rgba(117, 117, 117, 0.5);
 }
 
-.modal-acception {
+.acception {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.acception-chekbox {
+    appearance: none;
+    position: absolute;
+}
+
+.acception-label {
     font-size: 12px;
     line-height: 1.33;
     letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+
+    text-align: center;
 
     color: #757575;
 }
 
-.acception {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 24px;
+.acception-label::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+
+    background-color: var(--white-color);
+    border: 1.25px solid #2E2F42;
+    border-radius: 2px;
+}
+
+.acception-chekbox:checked + .acception-label::before {
+    background-image: url("../images/svg/accept.svg");
+    background-size: contain;
+    background-origin: border-box;
+    background-color: var(--pressed-state-color);
+    border-color: transparent;
+    border-radius: 2px;
 }
 
 .acception-link {
     color: var(--primary-brand-color);
+    margin-left: 5px;
+    text-decoration: underline;
 }
 
 /* ======= Footer ======= */
@@ -568,6 +634,11 @@ textarea {
 }
 
 .footer-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-left {
     display: flex;
     gap: 120px;
 }
@@ -631,6 +702,92 @@ textarea {
     background-color: var(--success-color);
 }
 
+.subscribe {
+    display: flex;
+    flex-direction: column;
+}
+
+.subscribe-form {
+    display: flex;
+    gap: 24px;
+}
+
+.subscribe-field {
+    position: relative;
+}
+
+.subscribe-label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 12px;
+    line-height: 2;
+    letter-spacing: 0.04em;
+    
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.subscribe-input {
+    width: 264px;
+    padding: 8px 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    
+    color: var(--accent-color);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+    border-radius: 4px;
+    background-color: transparent;
+    outline: none;
+    /* appearance: none; */
+}
+
+.subscribe-field:focus-within > .subscribe-label {
+    visibility: hidden;
+}
+
+.subscribe-input:not(:placeholder-shown) + .subscribe-label {
+    visibility: hidden;
+}
+
+.subscribe-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 24px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    letter-spacing: 0.06em;
+
+    cursor: pointer;
+
+    background-color: var(--primary-brand-color);
+    color: var(--white-color);
+    border-radius: 4px;
+    border: 0px solid transparent;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.subscribe-button::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+
+    background-image: url("../images/svg/subscribe.svg");
+    background-size: contain;
+    fill: var(--white-color);
+}
+
+.subscribe-button:hover,
+.subscribe-button:focus {
+    background-color: var(--pressed-state-color);
+}
+
 /* ======= Portfolio ======= */
 
 /* === Portfolio section === */
@@ -675,7 +832,7 @@ textarea {
 
 .button:hover,
 .button:focus {
-    background-color: var(--primary-brand-color);
+    background-color: var(--pressed-state-color);
     color: var(--white-color);
     border-color: transparent;
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
